@@ -22,12 +22,12 @@ QUIET_AR = @printf '    %b %b\n' $(LINKCOLOR)AR$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOL
 endif
 
 ifeq ($(uname_S),SunOS)
-  CFLAGS?= -std=c99 -pedantic $(OPTIMIZATION) -Wall -W -D__EXTENSIONS__ -D_XPG6 -DTAIR_STORAGE
+  CFLAGS?= -fPIC -std=c99 -pedantic $(OPTIMIZATION) -Wall -W -D__EXTENSIONS__ -D_XPG6 -DTAIR_STORAGE
   CPPFLAGS?= $(OPTIMIZATION) -g -Wall -W $(ARCH) $(PROF) -DTAIR_STORAGE
   CCLINK?= -ldl -lnsl -lsocket -lm -lpthread
   DEBUG?= -g -ggdb 
 else
-  CFLAGS?= -std=c99 -g -pedantic $(OPTIMIZATION) -Wall -W $(ARCH) $(PROF) -DTAIR_STORAGE
+  CFLAGS?= -fPIC -std=c99 -g -pedantic $(OPTIMIZATION) -Wall -W $(ARCH) $(PROF) -DTAIR_STORAGE
   CPPFLAGS?= $(OPTIMIZATION) -g -Wall -W $(ARCH) $(PROF) -DTAIR_STORAGE
   CCLINK?= -lm -pthread -lstdc++
   DEBUG?= -g -rdynamic -ggdb 
